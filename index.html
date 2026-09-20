@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CAP Santé Maristes — Cabinet médical & maternité à Dakar</title>
+<meta name="description" content="CAP Santé Maristes, cabinet médical aux Maristes (Dakar) : sage-femme, gynécologie, médecine générale, pédiatrie, suivi de grossesse et accompagnement de la maman et du bébé.">
+<meta name="theme-color" content="#0F4C3F">
+<meta name="color-scheme" content="light only">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Karla:ital,wght@0,300..700;1,400..500&display=swap" rel="stylesheet">
+<style>
+/* ---------------------------------------------------------------
+   CAP SANTÉ MARISTES
+   Jetons de design : vert & bleu médical, blanc, touches rose
+   (maternité) et marron / sable (tradition, karité).
+   Signature visuelle : l'arche — reprise dans le logo, les cadres
+   d'images et les sections. Elle évoque la protection, le "cap".
+   --------------------------------------------------------------- */
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+
+  --bg:#ffffff;
+  --bg-soft:#FAFCFB;
+  --surface:#ffffff;
+  --line:#DCE8E2;
+  --line-strong:#C3D9D0;
+  --text:#103129;
+  --text-2:#4E6A63;
+
+  --vert:#17836B;
+  --vert-deep:#0F4C3F;
+  --vert-soft:#EDF7F2;
+  --bleu:#1A6FA3;
+  --bleu-soft:#E6F0F7;
+  --rose:#C77A83;
+  --rose-soft:#FBEDEC;
+  --marron:#8A5A3B;
+  --sable:#FBF4E9;
+
+  --illu-bg:#EDF7F2;
+  --illu-sun:#EFE1CC;
+  --illu-pattern:#9BC7B7;
+
+  --radius:14px;
+  --radius-lg:22px;
+  --shadow:0 18px 40px -28px rgba(15,76,63,.45);
+
+  --ff-display:"Fraunces","Iowan Old Style",Georgia,"Times New Roman",serif;
+  --ff-text:"Karla",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+
+  --wrap:1160px;
+  --gutter:clamp(20px,5vw,48px);
+
+  color-scheme:light only;
+}
+
+*,*::before,*::after{box-sizing:inherit}
+html{ -webkit-text-size-adjust:100%; scroll-padding-top:calc(86px + env(safe-area-inset-top,0px)); }
+@media (prefers-reduced-motion:no-preference){ html{scroll-behavior:smooth} }
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:var(--ff-text); font-size:17px; line-height:1.65;
+  font-weight:400; -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--ff-display); font-weight:500; line-height:1.14; margin:0; letter-spacing:-.012em;
+  font-variation-settings:"SOFT" 28,"WONK" 0}
+p{margin:0}
+:focus-visible{outline:3px solid var(--bleu); outline-offset:3px; border-radius:6px}
+
+.wrap{width:100%; max-width:var(--wrap); margin-inline:auto; padding-inline:var(--gutter)}
+.section{padding-block:clamp(64px,9vw,112px)}
+.section--soft{background:var(--bg-soft)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:var(--gutter);top:10px;z-index:200;background:var(--vert-deep);color:#fff;padding:10px 16px;border-radius:10px}
+
+/* ---------- En-tête ---------- */
+.hdr{
+  position:sticky; top:env(safe-area-inset-top,0px); z-index:60;
+  background:var(--bg);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent; transition:border-color .25s ease;
+}
+.hdr.is-stuck{border-bottom-color:var(--line)}
+.hdr__in{display:flex;align-items:center;gap:18px;min-height:76px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:0 0 auto}
+.brand__mark{width:38px;height:38px;flex:0 0 auto}
+.brand__txt{display:flex;flex-direction:column;line-height:1.05}
+.brand__name{font-family:var(--ff-display);font-size:19px;font-weight:600;color:var(--vert-deep)}
+.brand__sub{font-size:11.5px;color:var(--text-2);letter-spacing:.06em}
+.nav{margin-left:auto;display:none;align-items:center;gap:26px}
+.nav a{text-decoration:none;font-size:15px;color:var(--text-2);padding-block:6px;position:relative;transition:color .2s}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--vert);
+  transform:scaleX(0);transform-origin:left;transition:transform .25s ease;border-radius:2px}
+.nav a:hover,.nav a.is-active{color:var(--text)}
+.nav a.is-active::after{transform:scaleX(1)}
+.hdr__cta{display:none}
+.burger{margin-left:auto;display:inline-flex;align-items:center;gap:9px;background:none;border:1px solid var(--line-strong);
+  color:var(--text);font:inherit;font-size:14px;padding:9px 14px;border-radius:999px;cursor:pointer}
+.burger svg{width:16px;height:16px}
+@media (min-width:1040px){
+  .nav{display:flex}
+  .burger{display:none}
+  .hdr__cta{display:inline-flex}
+}
+.menu{display:none;border-top:1px solid var(--line);background:var(--bg);padding:14px var(--gutter) 22px}
+.menu.is-open{display:block}
+.menu a{display:block;text-decoration:none;padding:13px 2px;border-bottom:1px solid var(--line);font-size:17px}
+.menu a:last-of-type{border-bottom:0}
+.menu .btn{margin-top:14px;width:100%;justify-content:center}
+@media (min-width:1040px){.menu{display:none !important}}
+
+/* ---------- Boutons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font:inherit;font-weight:600;font-size:15.5px;
+  padding:13px 22px;border-radius:999px;border:1px solid transparent;text-decoration:none;cursor:pointer;
+  transition:transform .18s ease,background-color .2s ease,color .2s ease,border-color .2s ease}
+.btn svg{width:18px;height:18px;flex:0 0 auto}
+.btn:active{transform:translateY(1px)}
+.btn--primary{background:var(--vert-deep);color:#fff}
+.btn--primary:hover{background:var(--vert)}
+.btn--wa{background:#1FA855;color:#fff}
+.btn--wa:hover{background:#178f47}
+.btn--ghost{background:transparent;color:var(--text);border-color:var(--line-strong)}
+.btn--ghost:hover{border-color:var(--vert);color:var(--vert-deep)}
+.btn--sm{padding:10px 17px;font-size:14.5px}
+
+/* ---------- Titres de section ---------- */
+.shead{max-width:60ch;margin-bottom:clamp(30px,4.5vw,52px)}
+.shead h2{font-size:clamp(28px,4.2vw,44px)}
+.shead p{margin-top:14px;color:var(--text-2);font-size:17.5px;max-width:58ch}
+.shead--center{margin-inline:auto;text-align:center}
+.shead--center p{margin-inline:auto}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0 0 auto;height:72%;
+  background:linear-gradient(180deg,var(--vert-soft),transparent);opacity:.6;z-index:-1}
+.hero__in{display:grid;gap:clamp(34px,5vw,60px);padding-block:clamp(38px,6vw,76px) clamp(56px,7vw,96px);
+  grid-template-columns:1fr;align-items:center}
+@media (min-width:920px){.hero__in{grid-template-columns:1.05fr .95fr}}
+.hero h1{font-size:clamp(38px,6.6vw,66px);font-variation-settings:"SOFT" 40,"WONK" 1}
+.hero__tag{display:block;font-family:var(--ff-display);font-style:italic;font-weight:400;
+  font-size:clamp(21px,3vw,29px);color:var(--vert);margin-top:10px;letter-spacing:0}
+.hero__lead{margin-top:20px;color:var(--text-2);font-size:clamp(17px,2vw,19.5px);max-width:46ch}
+.hero__acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero__phones{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.phone{display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:var(--surface);
+  border:1px solid var(--line);border-radius:999px;padding:9px 16px 9px 10px;transition:border-color .2s,transform .18s}
+.phone:hover{border-color:var(--vert);transform:translateY(-1px)}
+.phone span{font-size:15.5px;font-weight:600;letter-spacing:.01em;white-space:nowrap}
+.phone i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--vert-soft);color:var(--vert-deep)}
+.phone i svg{width:15px;height:15px}
+
+/* cadre en arche — motif signature */
+.arch{position:relative;border-radius:min(50%,230px) min(50%,230px) var(--radius-lg) var(--radius-lg);
+  overflow:hidden;background:var(--illu-bg);box-shadow:var(--shadow)}
+.arch svg{display:block;width:100%;height:auto}
+.hero__art{max-width:460px;margin-inline:auto;width:100%}
+
+/* ---------- Bandeau de confiance ---------- */
+.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
+.trust__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line)}
+@media (min-width:860px){.trust__grid{grid-template-columns:repeat(4,1fr)}}
+.trust__item{background:var(--surface);padding:26px clamp(16px,2.4vw,28px);display:flex;gap:13px;align-items:flex-start}
+.trust__item svg{width:24px;height:24px;flex:0 0 auto;color:var(--vert);margin-top:2px}
+.trust__item b{display:block;font-weight:600;font-size:16px}
+.trust__item small{color:var(--text-2);font-size:14px;line-height:1.5;display:block;margin-top:3px}
+
+/* ---------- Cartes de services ---------- */
+.cards{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(248px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px 30px;
+  transition:border-color .25s ease,transform .25s ease}
+.card:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+.card__ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;margin-bottom:20px}
+.card__ico svg{width:26px;height:26px}
+.card h3{font-size:21px}
+.card p{margin-top:10px;color:var(--text-2);font-size:15.5px;line-height:1.6}
+.t-vert{background:var(--vert-soft);color:var(--vert-deep)}
+.t-bleu{background:var(--bleu-soft);color:var(--bleu)}
+.t-rose{background:var(--rose-soft);color:var(--rose)}
+.t-sable{background:var(--sable);color:var(--marron)}
+
+/* ---------- Maternité ---------- */
+.split{display:grid;gap:clamp(32px,5vw,64px);grid-template-columns:1fr;align-items:center}
+@media (min-width:920px){
+  .split{grid-template-columns:.95fr 1.05fr}
+  .split--flip .split__art{order:2}
+}
+.split__art{max-width:420px;width:100%;margin-inline:auto}
+.steps{list-style:none;margin:26px 0 0;padding:0;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:auto 1fr;gap:16px;padding:14px 0;
+  border-top:1px solid var(--line)}
+.steps li:first-child{border-top:0;padding-top:0}
+.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--ff-display);font-size:14px;
+  color:var(--vert);padding-top:4px;font-variant-numeric:tabular-nums}
+.steps b{font-weight:600;font-size:17px}
+.steps span{display:block;color:var(--text-2);font-size:15px;margin-top:2px}
+.more{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.more[data-open="true"]{max-height:900px}
+.more p{color:var(--text-2);font-size:15.5px;padding-top:18px;max-width:58ch}
+.toggle{margin-top:22px}
+.toggle svg{transition:transform .3s ease}
+.toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+
+/* ---------- Tradition ---------- */
+.tradition{background:var(--sable);color:#3B2B1D}
+.tradition .shead p,.tradition .prose{color:inherit;opacity:.82}
+.note{margin-top:24px;border-left:3px solid var(--marron);padding:4px 0 4px 18px;font-size:15px;opacity:.85;max-width:56ch}
+
+/* ---------- Produits ---------- */
+.prods{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.prod{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  display:flex;flex-direction:column}
+.prod__img{background:var(--illu-bg)}
+.prod__img svg{display:block;width:100%;height:auto}
+.prod__body{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1}
+.prod h3{font-size:20px}
+.prod p{margin-top:9px;color:var(--text-2);font-size:15.5px;flex:1}
+.prod .btn{margin-top:20px;align-self:flex-start}
+
+/* ---------- Avantages ---------- */
+.perks{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.perks li{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:18px 20px}
+.perks svg{width:22px;height:22px;color:var(--vert);flex:0 0 auto;margin-top:2px}
+.perks b{font-weight:600;font-size:16.5px}
+.perks span{display:block;color:var(--text-2);font-size:14.5px;margin-top:2px}
+
+/* ---------- À propos ---------- */
+.about{max-width:64ch;margin-inline:auto;text-align:center}
+.about p{font-family:var(--ff-display);font-size:clamp(20px,2.7vw,27px);line-height:1.45;font-weight:300}
+.about .sig{font-family:var(--ff-text);font-size:15px;color:var(--text-2);margin-top:22px;letter-spacing:.04em}
+
+/* ---------- Contact ---------- */
+.contact__grid{display:grid;gap:clamp(30px,4.5vw,56px);grid-template-columns:1fr}
+@media (min-width:940px){.contact__grid{grid-template-columns:.85fr 1.15fr}}
+.info{display:grid;gap:14px;align-content:start}
+.info__row{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:18px 20px}
+.info__row i{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;flex:0 0 auto}
+.info__row i svg{width:19px;height:19px}
+.info__row small{display:block;color:var(--text-2);font-size:13.5px;letter-spacing:.03em}
+.info__row a,.info__row b{font-size:17px;font-weight:600;text-decoration:none;display:block;margin-top:1px}
+.info__row a:hover{color:var(--vert)}
+.info__acts{display:flex;flex-wrap:wrap;gap:11px;margin-top:4px}
+
+.form{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:clamp(24px,3.4vw,38px)}
+.form h3{font-size:24px}
+.form>p{color:var(--text-2);font-size:15.5px;margin-top:8px;max-width:52ch}
+.grid2{display:grid;gap:16px;grid-template-columns:1fr;margin-top:24px}
+@media (min-width:620px){.grid2{grid-template-columns:1fr 1fr}}
+.field{display:flex;flex-direction:column;gap:7px}
+.field--full{grid-column:1/-1}
+.field label{font-size:14px;font-weight:600;color:var(--text-2)}
+.field input,.field select,.field textarea{
+  font:inherit;font-size:16px;color:var(--text);background:var(--bg);
+  border:1px solid var(--line-strong);border-radius:11px;padding:12px 14px;width:100%;
+  transition:border-color .2s ease,box-shadow .2s ease}
+.field textarea{resize:vertical;min-height:104px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--vert);
+  box-shadow:0 0 0 3px rgba(23,131,107,.24);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--vert) 22%,transparent)}
+.field .err{font-size:13px;color:#C0392B;display:none}
+.field.is-bad input,.field.is-bad select{border-color:#C0392B}
+.field.is-bad .err{display:block}
+.form__foot{margin-top:24px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.form__hint{font-size:13.5px;color:var(--text-2);max-width:40ch}
+.ok{display:none;margin-top:20px;background:var(--vert-soft);color:var(--vert-deep);border-radius:12px;
+  padding:15px 18px;font-size:15px}
+.ok.is-on{display:block}
+
+/* ---------- Pied de page ---------- */
+.foot{background:var(--vert-deep);color:#E8F3EE;padding-block:clamp(48px,6vw,72px) 0}
+.foot a{color:inherit}
+.foot__grid{display:grid;gap:34px;grid-template-columns:1fr}
+@media (min-width:800px){.foot__grid{grid-template-columns:1.4fr 1fr 1fr}}
+.foot h4{font-size:20px;color:#fff}
+.foot__tag{font-family:var(--ff-display);font-style:italic;font-size:18px;opacity:.85;margin-top:6px}
+.foot p,.foot li{font-size:15px;opacity:.82;line-height:1.7}
+.foot ul{list-style:none;margin:12px 0 0;padding:0}
+.foot ul a{text-decoration:none}
+.foot ul a:hover{text-decoration:underline}
+.foot__lbl{font-size:12.5px;letter-spacing:.1em;opacity:.6;margin-bottom:8px}
+.foot__social{display:flex;gap:10px;margin-top:18px}
+.foot__social a{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.28);transition:background-color .2s}
+.foot__social a:hover{background:rgba(255,255,255,.14)}
+.foot__social svg{width:18px;height:18px}
+.foot__bar{margin-top:44px;border-top:1px solid rgba(255,255,255,.16);padding-block:20px;
+  font-size:13.5px;opacity:.7;display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between}
+
+/* ---------- Barre d'action mobile ---------- */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:70;display:flex;gap:10px;
+  padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));
+  background:var(--bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-top:1px solid var(--line)}
+.dock .btn{flex:1}
+@media (min-width:1040px){.dock{display:none}}
+@media (max-width:1039px){body{padding-bottom:78px}}
+
+/* ---------- Animations au défilement ---------- */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+.reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .more{transition:none}
+  .btn,.card,.phone{transition:none}
+}
+
+/* ---------- Navigation par pages ---------- */
+.page{display:none}
+.page.is-on{display:block;animation:pageIn .42s ease both}
+@keyframes pageIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ---------- Bandeau de titre de page ---------- */
+.phead{background:var(--vert-soft);border-bottom:1px solid var(--line);padding-block:18px}
+.crumb{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--text-2);letter-spacing:.02em;flex-wrap:wrap}
+.crumb a{text-decoration:none;color:var(--vert-deep)}
+.crumb a:hover{text-decoration:underline}
+.crumb b{font-weight:600;color:var(--text)}
+.crumb svg{width:14px;height:14px;opacity:.55}
+
+/* ---------- Cartes d'accès aux pages (accueil) ---------- */
+.explore{display:grid;gap:18px;grid-template-columns:1fr}
+@media (min-width:640px){.explore{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1000px){.explore{grid-template-columns:repeat(3,1fr)}}
+.xcard{display:flex;flex-direction:column;gap:9px;text-decoration:none;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--radius-lg);padding:26px 24px 24px;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.xcard:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--line-strong)}
+.xcard__ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;margin-bottom:6px}
+.xcard__ico svg{width:23px;height:23px}
+.xcard h3{font-size:21px}
+.xcard p{font-size:15px;color:var(--text-2);line-height:1.6}
+.xcard__go{margin-top:auto;padding-top:14px;font-size:14.5px;font-weight:600;color:var(--vert-deep);
+  display:inline-flex;align-items:center;gap:7px}
+.xcard:hover .xcard__go svg{transform:translateX(4px)}
+.xcard__go svg{width:15px;height:15px;transition:transform .25s ease}
+
+/* ---------- Bande d'appel WhatsApp ---------- */
+.band{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding-block:clamp(44px,6vw,72px)}
+.band__in{display:grid;gap:26px;align-items:center}
+@media (min-width:900px){.band__in{grid-template-columns:1.1fr 1fr}}
+.band h2{font-size:clamp(26px,3.4vw,34px)}
+.band p{color:var(--text-2);margin-top:10px;max-width:52ch}
+.wa-grid{display:grid;gap:11px;grid-template-columns:1fr}
+@media (min-width:520px){.wa-grid{grid-template-columns:1fr 1fr}}
+.wa-pick{display:flex;align-items:center;gap:11px;text-decoration:none;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;font-size:15px;font-weight:600;
+  transition:border-color .2s ease,background-color .2s ease}
+.wa-pick:hover{border-color:#1FA855;background:#F2FBF5}
+.wa-pick svg{width:19px;height:19px;color:#1FA855;flex:0 0 auto}
+
+/* ---------- Pied de page clair ---------- */
+.foot{background:var(--bg-soft);color:var(--text);border-top:1px solid var(--line)}
+.foot h4{color:var(--vert-deep)}
+.foot__tag{color:var(--vert);opacity:1}
+.foot p,.foot li{color:var(--text-2);opacity:1}
+.foot__lbl{color:var(--text-2);opacity:1}
+.foot__social a{border-color:var(--line-strong);color:var(--vert-deep)}
+.foot__social a:hover{background:var(--vert-soft)}
+.foot__bar{border-top-color:var(--line);color:var(--text-2);opacity:1}
+
+@media (prefers-reduced-motion:reduce){
+  .page.is-on{animation:none}
+  .xcard,.wa-pick,.xcard__go svg{transition:none}
+}
+</style>
+<noscript><style>.page{display:block}</style></noscript>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<!-- Motifs et dégradés partagés par les illustrations -->
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <defs>
+    <pattern id="waxArcs" width="46" height="46" patternUnits="userSpaceOnUse">
+      <path d="M-4 34a27 27 0 0 1 54 0" fill="none" stroke="var(--illu-pattern)" stroke-width="1.6" opacity=".55"/>
+      <circle cx="23" cy="10" r="2.4" fill="var(--illu-pattern)" opacity=".5"/>
+    </pattern>
+  </defs>
+</svg>
+
+<header class="hdr" id="hdr">
+  <div class="wrap hdr__in">
+    <a class="brand" href="#/accueil" aria-label="CAP Santé Maristes, accueil">
+      <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M4 34V20a16 16 0 0 1 32 0v14" fill="none" stroke="var(--vert-deep)" stroke-width="3.2" stroke-linecap="round"/>
+        <circle cx="20" cy="22" r="6" fill="var(--rose)"/>
+        <path d="M13 34h14" stroke="var(--bleu)" stroke-width="3.2" stroke-linecap="round"/>
+      </svg>
+      <span class="brand__txt">
+        <span class="brand__name">CAP Santé Maristes</span>
+        <span class="brand__sub">Maristes · Dakar</span>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="#/accueil" data-nav="accueil">Accueil</a>
+      <a href="#/services" data-nav="services">Services</a>
+      <a href="#/maternite" data-nav="maternite">Maternité</a>
+      <a href="#/massage-traditionnel" data-nav="massage-traditionnel">Massage traditionnel</a>
+      <a href="#/produits" data-nav="produits">Produits</a>
+      <a href="#/a-propos" data-nav="a-propos">À propos</a>
+      <a href="#/contact" data-nav="contact">Contact</a>
+    </nav>
+
+    <a class="btn btn--primary btn--sm hdr__cta" href="#/rendez-vous">Prendre rendez-vous</a>
+
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18"/>
+      </svg>
+      Menu
+    </button>
+  </div>
+  <div class="menu" id="menu">
+    <a href="#/accueil" data-nav="accueil">Accueil</a>
+    <a href="#/services" data-nav="services">Services</a>
+    <a href="#/maternite" data-nav="maternite">Maternité</a>
+    <a href="#/massage-traditionnel" data-nav="massage-traditionnel">Massage traditionnel</a>
+    <a href="#/produits" data-nav="produits">Produits</a>
+    <a href="#/a-propos" data-nav="a-propos">À propos</a>
+    <a href="#/contact" data-nav="contact">Contact</a>
+    <a class="btn btn--primary" href="#/rendez-vous">Prendre rendez-vous</a>
+  </div>
+</header>
+
+<main id="main">
+
+<div class="page" data-page="accueil">
+<section class="hero" id="accueil">
+  <div class="wrap hero__in">
+    <div class="hero__txt">
+      <h1>CAP Santé Maristes
+        <em class="hero__tag">Votre santé, notre priorité.</em>
+      </h1>
+      <p class="hero__lead">Un accompagnement médical et humain pour les femmes, les mamans,
+        les bébés et toute la famille, au cœur des Maristes.</p>
+
+      <div class="hero__acts">
+        <a class="btn btn--primary" href="#/rendez-vous">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 11h18M9 16h6"/>
+          </svg>
+          Prendre rendez-vous
+        </a>
+        <a class="btn btn--wa" href="https://wa.me/221776318385?text=Bonjour%20CAP%20Sant%C3%A9%20Maristes%2C%20je%20souhaite%20avoir%20des%20informations." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.3 1.3-1.8 1.3-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3 0 .1 0 .6-.2 1.2Z"/>
+          </svg>
+          Nous contacter sur WhatsApp
+        </a>
+      </div>
+
+      <div class="hero__phones">
+        <a class="phone" href="tel:+221771266262">
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a12 12 0 0 0 5 5L14 12l5 2v3a2 2 0 0 1-2.2 2A16 16 0 0 1 3 5.2 2 2 0 0 1 5 3Z"/></svg></i>
+          <span>+221 77 126 62 62</span>
+        </a>
+        <a class="phone" href="tel:+221776318385">
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a12 12 0 0 0 5 5L14 12l5 2v3a2 2 0 0 1-2.2 2A16 16 0 0 1 3 5.2 2 2 0 0 1 5 3Z"/></svg></i>
+          <span>+221 77 631 83 85</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Illustration : sage-femme accompagnant une femme enceinte -->
+    <div class="hero__art">
+      <div class="arch">
+        <svg viewBox="0 0 440 600" role="img" aria-label="Illustration : une sage-femme accompagne une femme enceinte">
+          <rect width="440" height="600" fill="var(--illu-bg)"/>
+          <circle cx="300" cy="170" r="118" fill="var(--illu-sun)"/>
+          <rect y="430" width="440" height="170" fill="url(#waxArcs)"/>
+          <!-- sage-femme -->
+          <g>
+            <ellipse cx="150" cy="252" rx="40" ry="26" transform="rotate(-8 150 252)" fill="#9CC4DE"/>
+            <circle cx="150" cy="272" r="36" fill="#5E3B26"/>
+            <ellipse cx="150" cy="248" rx="41" ry="24" transform="rotate(-8 150 248)" fill="#9CC4DE"/>
+            <circle cx="190" cy="240" r="10" fill="#9CC4DE"/>
+            <rect x="139" y="300" width="22" height="20" fill="#5E3B26"/>
+            <path d="M150 308c-30 0-52 18-58 46l-16 196c-1 12 8 22 20 22h108c12 0 21-10 20-22l-16-196c-6-28-28-46-58-46z" fill="#C9DEED"/>
+            <rect x="182" y="330" width="116" height="25" rx="12.5" transform="rotate(14 182 330)" fill="#5E3B26"/>
+          </g>
+          <!-- femme enceinte -->
+          <g>
+            <circle cx="300" cy="300" r="34" fill="#8A5A3B"/>
+            <ellipse cx="300" cy="278" rx="39" ry="24" transform="rotate(7 300 278)" fill="#DFA7AC"/>
+            <circle cx="262" cy="272" r="9" fill="#DFA7AC"/>
+            <rect x="290" y="326" width="21" height="18" fill="#8A5A3B"/>
+            <path d="M264 340h74c14 0 25 11 26 25l12 197c1 11-8 20-19 20h-112c-11 0-20-9-19-20l12-197c1-14 12-25 26-25z" fill="#F4DFDC"/>
+            <circle cx="338" cy="438" r="66" fill="#F4DFDC"/>
+            <rect x="296" y="472" width="72" height="20" rx="10" transform="rotate(-8 296 472)" fill="#8A5A3B"/>
+            <rect x="300" y="396" width="64" height="19" rx="9.5" transform="rotate(10 300 396)" fill="#8A5A3B"/>
+          </g>
+          <path d="M60 560h320" stroke="var(--illu-pattern)" stroke-width="2" opacity=".5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust" aria-label="Nos engagements">
+  <div class="wrap" style="padding-inline:0">
+    <div class="trust__grid">
+      <div class="trust__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9.5" r="2.4"/><path d="M3.5 19c.6-3.2 2.8-4.8 5.5-4.8s4.9 1.6 5.5 4.8M16 14.4c2.2.2 3.8 1.7 4.3 4.6"/></svg>
+        <div><b>Équipe médicale</b><small>Des professionnels de santé réunis dans un même lieu.</small></div>
+      </div>
+      <div class="trust__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.8C19 15.6 12 20 12 20Z"/></svg>
+        <div><b>Accompagnement personnalisé</b><small>Le temps d'écouter, d'expliquer et de rassurer.</small></div>
+      </div>
+      <div class="trust__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M10 7.6h.01M14 7.6h.01M10.3 10.2a2.4 2.4 0 0 0 3.4 0M5 20c1.3-3.6 3.9-5.4 7-5.4s5.7 1.8 7 5.4"/></svg>
+        <div><b>Maternité</b><small>Un suivi continu, de la grossesse aux premiers mois.</small></div>
+      </div>
+      <div class="trust__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h3.2l1.6-3.4 2.6 7 2-4.4 1.4 2.8H21"/><path d="M20.3 8.6A3.7 3.7 0 0 0 12 6.8a3.7 3.7 0 0 0-8.3 1.8"/></svg>
+        <div><b>Santé de la mère et de l'enfant</b><small>Prévention, consultations et suivi régulier.</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="shead reveal">
+      <h2>Explorer le cabinet</h2>
+      <p>Chaque rubrique a sa propre page — choisissez ce qui vous amène.</p>
+    </div>
+    <div class="explore">
+      <a class="xcard reveal" href="#/services">
+        <span class="xcard__ico t-rose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="3.4"/><path d="M4 20c1.4-2.6 3-4 5-4.6M20 20c-1.4-2.6-3-4-5-4.6"/></svg></span>
+        <h3>Nos services médicaux</h3>
+        <p>Sage-femme, gynécologie, médecine générale et pédiatrie, dans un même lieu.</p>
+        <span class="xcard__go">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m-5-6 6 6-6 6"/></svg></span>
+      </a>
+      <a class="xcard reveal" href="#/maternite">
+        <span class="xcard__ico t-rose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.4-7-9.4A4 4 0 0 1 12 8a4 4 0 0 1 7 3.6c0 5-7 9.4-7 9.4Z"/></svg></span>
+        <h3>Maternité &amp; accompagnement</h3>
+        <p>Du suivi de grossesse au retour à la maison, étape par étape.</p>
+        <span class="xcard__go">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m-5-6 6 6-6 6"/></svg></span>
+      </a>
+      <a class="xcard reveal" href="#/massage-traditionnel">
+        <span class="xcard__ico t-sable"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15c4-1 6-4 6-8 3 1 5 3.5 5 7M4 15c0 3 2.6 5 6 5 4.4 0 8-3.4 8-8"/></svg></span>
+        <h3>Massage traditionnel — Damp</h3>
+        <p>Une prestation traditionnelle de bien-être, proposée au cabinet.</p>
+        <span class="xcard__go">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m-5-6 6 6-6 6"/></svg></span>
+      </a>
+      <a class="xcard reveal" href="#/produits">
+        <span class="xcard__ico t-vert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Zm4 0V6a3 3 0 0 1 6 0v2"/></svg></span>
+        <h3>Nos produits</h3>
+        <p>Valise d’accouchement maman &amp; bébé, beurre de karité pour massage.</p>
+        <span class="xcard__go">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m-5-6 6 6-6 6"/></svg></span>
+      </a>
+      <a class="xcard reveal" href="#/a-propos">
+        <span class="xcard__ico t-vert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></span>
+        <h3>À propos du cabinet</h3>
+        <p>Qui nous sommes et ce qui guide notre accueil au quotidien.</p>
+        <span class="xcard__go">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m-5-6 6 6-6 6"/></svg></span>
+      </a>
+      <a class="xcard reveal" href="#/contact">
+        <span class="xcard__ico t-vert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a12 12 0 0 0 5 5L14 12l5 2v3a2 2 0 0 1-2.2 2A16 16 0 0 1 3 5.2 2 2 0 0 1 5 3Z"/></svg></span>
+        <h3>Nous contacter</h3>
+        <p>Téléphone, WhatsApp et demande de rendez-vous en ligne.</p>
+        <span class="xcard__go">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m-5-6 6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap band__in">
+    <div class="reveal">
+      <h2>Un message suffit</h2>
+      <p>Choisissez la consultation qui vous concerne : votre message WhatsApp s’ouvre déjà rédigé, il ne reste qu’à l’envoyer au 77 631 83 85.</p>
+    </div>
+    <div class="reveal">
+      <div class="wa-grid">
+        <a class="wa-pick" data-wa="Bonjour CAP Santé Maristes, je souhaite un rendez-vous avec la sage-femme." href="#/contact" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.3 1.3-1.8 1.3-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3 0 .1 0 .6-.2 1.2Z"/></svg> Sage-femme</a>
+        <a class="wa-pick" data-wa="Bonjour CAP Santé Maristes, je souhaite un rendez-vous en gynécologie." href="#/contact" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.3 1.3-1.8 1.3-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3 0 .1 0 .6-.2 1.2Z"/></svg> Gynécologie</a>
+        <a class="wa-pick" data-wa="Bonjour CAP Santé Maristes, je souhaite un rendez-vous en médecine générale." href="#/contact" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.3 1.3-1.8 1.3-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3 0 .1 0 .6-.2 1.2Z"/></svg> Médecine générale</a>
+        <a class="wa-pick" data-wa="Bonjour CAP Santé Maristes, je souhaite un rendez-vous en pédiatrie." href="#/contact" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.3 1.3-1.8 1.3-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3 0 .1 0 .6-.2 1.2Z"/></svg> Pédiatrie</a>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="page" data-page="services">
+<div class="phead">
+  <div class="wrap">
+    <p class="crumb"><a href="#/accueil">Accueil</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg><b>Services</b></p>
+  </div>
+</div>
+
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="shead reveal">
+      <h2>Nos services médicaux</h2>
+      <p>Quatre consultations, un même lieu : celui où l'on prend le temps de vous écouter.</p>
+    </div>
+    <div class="cards">
+      <article class="card reveal">
+        <div class="card__ico t-rose">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="9" r="3.4"/><path d="M4 20c1.4-2.6 3-4 5-4.6M20 20c-1.4-2.6-3-4-5-4.6M3 13.5c1.6.2 2.6 1.3 3 3M21 13.5c-1.6.2-2.6 1.3-3 3"/>
+          </svg>
+        </div>
+        <h3>Sage-femme</h3>
+        <p>Accompagnement de la femme avant, pendant et après la grossesse.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__ico t-vert">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3.5 19 6v5.5c0 4-2.9 7.3-7 9-4.1-1.7-7-5-7-9V6l7-2.5Z"/><path d="M12 9v5M9.6 11.5h4.8"/>
+          </svg>
+        </div>
+        <h3>Gynécologie</h3>
+        <p>Consultations et suivi de la santé gynécologique.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__ico t-bleu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 3v5a4.5 4.5 0 0 0 9 0V3"/><path d="M4.4 3h3.2M13.4 3h3.2M10.5 12.4v2.2a4.6 4.6 0 0 0 9.2 0v-1.2"/><circle cx="19.7" cy="11.4" r="2"/>
+          </svg>
+        </div>
+        <h3>Médecine générale</h3>
+        <p>Consultations médicales et prise en charge générale.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__ico t-sable">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="13" r="6.2"/><circle cx="6.6" cy="6.6" r="2.6"/><circle cx="17.4" cy="6.6" r="2.6"/><path d="M10 12.2h.01M14 12.2h.01M10.2 15.4a2.6 2.6 0 0 0 3.6 0"/>
+          </svg>
+        </div>
+        <h3>Pédiatrie</h3>
+        <p>Suivi médical des nourrissons, enfants et adolescents.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap band__in">
+    <div class="reveal">
+      <h2>Un message suffit</h2>
+      <p>Choisissez la consultation qui vous concerne : votre message WhatsApp s’ouvre déjà rédigé, il ne reste qu’à l’envoyer au 77 631 83 85.</p>
+    </div>
+    <div class="reveal">
+      <div class="wa-grid">
+        <a class="wa-pick" data-wa="Bonjour CAP Santé Maristes, je souhaite un rendez-vous avec la sage-femme." href="#/contact" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.3 1.3-1.8 1.3-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3 0 .1 0 .6-.2 1.2Z"/></svg> Sage-femme</a>
+        <a class="wa-pick" data-wa="Bonjour CAP Santé Maristes, je souhaite un rendez-vous en gynécologie." href="#/contact" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.3 1.3-1.8 1.3-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3 0 .1 0 .6-.2 1.2Z"/></svg> Gynécologie</a>
+        <a class="wa-pick" data-wa="Bonjour CAP Santé Maristes, je souhaite un rendez-vous en médecine générale." href="#/contact" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.3 1.3-1.8 1.3-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3 0 .1 0 .6-.2 1.2Z"/></svg> Médecine générale</a>
+        <a class="wa-pick" data-wa="Bonjour CAP Santé Maristes, je souhaite un rendez-vous en pédiatrie." href="#/contact" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.3 1.3-1.8 1.3-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3 0 .1 0 .6-.2 1.2Z"/></svg> Pédiatrie</a>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="page" data-page="maternite">
+<div class="phead">
+  <div class="wrap">
+    <p class="crumb"><a href="#/accueil">Accueil</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg><b>Maternité</b></p>
+  </div>
+</div>
+
+<section class="section section--soft" id="maternite">
+  <div class="wrap split">
+    <div class="split__art reveal">
+      <div class="arch">
+        <svg viewBox="0 0 400 520" role="img" aria-label="Illustration : une maman porte son nouveau-né">
+          <rect width="400" height="520" fill="var(--illu-bg)"/>
+          <circle cx="200" cy="200" r="132" fill="var(--illu-sun)"/>
+          <rect y="380" width="400" height="140" fill="url(#waxArcs)"/>
+          <g>
+            <circle cx="182" cy="200" r="46" fill="#7A4F36"/>
+            <ellipse cx="182" cy="172" rx="52" ry="31" transform="rotate(-6 182 172)" fill="#DFA7AC"/>
+            <circle cx="132" cy="166" r="12" fill="#DFA7AC"/>
+            <rect x="168" y="238" width="28" height="24" fill="#7A4F36"/>
+            <path d="M182 252c-42 0-72 24-79 62l-20 162c-2 12 8 22 20 22h190c12 0 22-10 20-22l-22-162c-7-38-37-62-79-62z" fill="#CFE4DA"/>
+            <!-- bébé -->
+            <path d="M232 322c26 6 42 26 40 50-2 26-24 42-50 38-24-4-38-24-36-48 2-24 22-44 46-40z" fill="#F4DFDC"/>
+            <circle cx="248" cy="356" r="25" fill="#8A5A3B"/>
+            <path d="M226 342c4-14 18-22 32-18" stroke="#DFA7AC" stroke-width="9" stroke-linecap="round" fill="none"/>
+            <!-- bras qui berce -->
+            <path d="M140 330c22 52 62 78 116 74" stroke="#7A4F36" stroke-width="26" stroke-linecap="round" fill="none"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="shead" style="margin-bottom:0">
+        <h2>Maternité &amp; accompagnement</h2>
+        <p>De la première échographie aux premières semaines à la maison, la même équipe vous suit.</p>
+      </div>
+      <ol class="steps">
+        <li><div><b>Suivi de grossesse</b><span>Consultations régulières tout au long des neuf mois.</span></div></li>
+        <li><div><b>Accompagnement de la future maman</b><span>Écoute, conseils et réponses à vos questions.</span></div></li>
+        <li><div><b>Préparation à l'accouchement</b><span>Se préparer sereinement, physiquement et mentalement.</span></div></li>
+        <li><div><b>Accouchement</b><span>Une présence attentive le jour J.</span></div></li>
+        <li><div><b>Accompagnement après l'accouchement</b><span>Suivi de la maman et du bébé après la naissance.</span></div></li>
+      </ol>
+      <button class="btn btn--ghost toggle" id="matToggle" aria-expanded="false" aria-controls="matMore">
+        En savoir plus
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="more" id="matMore" data-open="false">
+        <div>
+          <p>Chaque grossesse est différente, et le rythme des rendez-vous s'adapte au vôtre.
+            La sage-femme reste votre interlocutrice principale et fait le lien avec le médecin
+            ou le pédiatre dès que c'est nécessaire.</p>
+          <p style="margin-top:14px">Après la naissance, les consultations portent autant sur le bébé
+            — poids, alimentation, sommeil — que sur la maman : récupération, allaitement,
+            et le simple fait d'avoir quelqu'un à qui poser ses questions.</p>
+          <a class="btn btn--primary btn--sm" href="#/rendez-vous" style="margin-top:20px">Prendre rendez-vous</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="page" data-page="tradition">
+<div class="phead">
+  <div class="wrap">
+    <p class="crumb"><a href="#/accueil">Accueil</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg><b>Massage traditionnel</b></p>
+  </div>
+</div>
+
+<section class="section tradition" id="tradition">
+  <div class="wrap split split--flip">
+    <div class="split__art reveal">
+      <div class="arch">
+        <svg viewBox="0 0 400 480" role="img" aria-label="Illustration : soin de massage traditionnel">
+          <rect width="400" height="480" fill="#EFE2D0"/>
+          <circle cx="210" cy="150" r="118" fill="#FAF3E8"/>
+          <g opacity=".5"><rect y="330" width="400" height="150" fill="url(#waxArcs)"/></g>
+          <!-- personne allongée -->
+          <path d="M40 350c40-70 110-104 186-96 56 6 100 30 134 68v78H40z" fill="#8A5A3B"/>
+          <path d="M52 352c38-60 100-88 168-82 46 4 84 22 114 50" fill="none" stroke="#6E452C" stroke-width="3" opacity=".35"/>
+          <circle cx="72" cy="268" r="34" fill="#6E452C"/>
+          <ellipse cx="66" cy="246" rx="38" ry="22" transform="rotate(-14 66 246)" fill="#C38B6A"/>
+          <!-- mains du praticien -->
+          <g fill="#5E3B26">
+            <rect x="168" y="236" width="86" height="30" rx="15" transform="rotate(-16 168 236)"/>
+            <rect x="196" y="276" width="86" height="30" rx="15" transform="rotate(-16 196 276)"/>
+          </g>
+          <!-- pot de karité -->
+          <g transform="translate(300 372)">
+            <rect x="0" y="12" width="64" height="58" rx="10" fill="#F3E7D4"/>
+            <rect x="-6" y="0" width="76" height="18" rx="9" fill="#C38B6A"/>
+          </g>
+          <!-- volutes -->
+          <g fill="none" stroke="#C38B6A" stroke-width="3" stroke-linecap="round" opacity=".75">
+            <path d="M300 160c-14 16 14 26 0 44"/>
+            <path d="M334 140c-14 16 14 26 0 44"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="shead" style="margin-bottom:22px">
+        <h2>Tradition &amp; bien-être</h2>
+        <p>Des gestes transmis de génération en génération, proposés dans un cadre propre et respectueux.</p>
+      </div>
+      <h3 style="font-size:25px">Massage traditionnel — Damp</h3>
+      <p class="prose" style="margin-top:12px;max-width:56ch">
+        Le damp fait partie des soins que l'on se transmet en famille au Sénégal.
+        Au cabinet, il est proposé comme une prestation traditionnelle de bien-être
+        et de détente : un moment de repos, pratiqué avec des gestes doux et dans
+        le respect du rythme de chacune.
+      </p>
+      <p class="prose" style="margin-top:14px;max-width:56ch">
+        La séance se déroule sur rendez-vous, dans un espace dédié, avec du beurre
+        de karité destiné aux soins corporels.
+      </p>
+      <p class="note">
+        Le massage traditionnel est une prestation de bien-être. Il ne constitue pas
+        un traitement médical et ne remplace ni une consultation ni un traitement
+        prescrit. Notre équipe vous oriente vers une consultation dès qu'un suivi
+        médical est nécessaire.
+      </p>
+      <a class="btn btn--primary" data-wa="Bonjour CAP Santé Maristes, je souhaite réserver une séance de massage traditionnel (damp)." href="#/contact" target="_blank" rel="noopener" style="margin-top:26px">Réserver une séance</a>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="page" data-page="produits">
+<div class="phead">
+  <div class="wrap">
+    <p class="crumb"><a href="#/accueil">Accueil</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg><b>Produits</b></p>
+  </div>
+</div>
+
+<section class="section" id="produits">
+  <div class="wrap">
+    <div class="shead reveal">
+      <h2>Nos produits</h2>
+      <p>Disponibles au cabinet. Commande et disponibilité sur WhatsApp.</p>
+    </div>
+    <div class="prods">
+      <article class="prod reveal">
+        <div class="prod__img">
+          <svg viewBox="0 0 560 320" role="img" aria-label="Illustration : valise de maternité avec des articles pour la maman et le bébé">
+            <rect width="560" height="320" fill="var(--illu-bg)"/>
+            <circle cx="420" cy="90" r="96" fill="var(--illu-sun)"/>
+            <!-- valise -->
+            <path d="M210 130h140c12 0 22 10 22 22v96c0 12-10 22-22 22H210c-12 0-22-10-22-22v-96c0-12 10-22 22-22z" fill="#5E3B26"/>
+            <path d="M252 130v-14c0-11 9-20 20-20h16c11 0 20 9 20 20v14" fill="none" stroke="#5E3B26" stroke-width="10" stroke-linecap="round"/>
+            <rect x="188" y="180" width="184" height="24" fill="#C38B6A"/>
+            <rect x="266" y="172" width="28" height="40" rx="6" fill="#EFE1CC"/>
+            <!-- bonnet -->
+            <g transform="translate(96 176)">
+              <path d="M0 44a40 40 0 0 1 80 0z" fill="#DFA7AC"/>
+              <rect x="-6" y="42" width="92" height="16" rx="8" fill="#F4DFDC"/>
+              <circle cx="40" cy="-2" r="9" fill="#F4DFDC"/>
+            </g>
+            <!-- biberon -->
+            <g transform="translate(424 168)">
+              <rect x="0" y="16" width="44" height="88" rx="14" fill="#CFE4DA"/>
+              <rect x="10" y="2" width="24" height="18" rx="8" fill="#C38B6A"/>
+              <path d="M8 46h28M8 64h28" stroke="#9BC7B7" stroke-width="4" stroke-linecap="round"/>
+            </g>
+            <!-- linge plié -->
+            <g transform="translate(400 246)">
+              <rect width="96" height="18" rx="8" fill="#F4DFDC"/>
+              <rect y="24" width="96" height="18" rx="8" fill="#CFE4DA"/>
+            </g>
+          </svg>
+        </div>
+        <div class="prod__body">
+          <h3>Valise accouchement — maman &amp; bébé</h3>
+          <p>Tout le nécessaire pour préparer sereinement l'arrivée de bébé.</p>
+          <a class="btn btn--wa btn--sm" data-wa="Bonjour CAP Santé Maristes, je souhaite commander : Valise accouchement — maman & bébé." href="#/contact" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.3 1.3-1.8 1.3-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3 0 .1 0 .6-.2 1.2Z"/></svg>
+            Commander sur WhatsApp
+          </a>
+        </div>
+      </article>
+
+      <article class="prod reveal">
+        <div class="prod__img">
+          <svg viewBox="0 0 560 320" role="img" aria-label="Illustration : pot de beurre de karité">
+            <rect width="560" height="320" fill="var(--illu-bg)"/>
+            <circle cx="160" cy="96" r="92" fill="var(--illu-sun)"/>
+            <!-- pot -->
+            <g transform="translate(212 108)">
+              <rect x="0" y="34" width="150" height="132" rx="18" fill="#F3E7D4"/>
+              <rect x="-12" y="8" width="174" height="34" rx="16" fill="#C38B6A"/>
+              <rect x="26" y="74" width="98" height="52" rx="10" fill="#EFE1CC"/>
+              <path d="M52 100h46" stroke="#C38B6A" stroke-width="5" stroke-linecap="round"/>
+              <path d="M52 86h66" stroke="#C38B6A" stroke-width="5" stroke-linecap="round" opacity=".6"/>
+            </g>
+            <!-- noix & feuille -->
+            <g transform="translate(400 210)">
+              <ellipse cx="26" cy="30" rx="26" ry="30" fill="#8A5A3B"/>
+              <ellipse cx="70" cy="40" rx="20" ry="23" fill="#6E452C"/>
+            </g>
+            <path d="M150 232c34-46 84-48 110-30-26 44-76 52-110 30z" fill="#9BC7B7"/>
+            <path d="M150 232c30-20 62-28 96-26" stroke="#5E8F7C" stroke-width="4" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="prod__body">
+          <h3>Beurre de karité pour massage</h3>
+          <p>Beurre de karité destiné aux soins corporels et aux massages.</p>
+          <a class="btn btn--wa btn--sm" data-wa="Bonjour CAP Santé Maristes, je souhaite commander : Beurre de karité pour massage." href="#/contact" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.3 1.3-1.8 1.3-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3 0 .1 0 .6-.2 1.2Z"/></svg>
+            Commander sur WhatsApp
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="page" data-page="apropos">
+<div class="phead">
+  <div class="wrap">
+    <p class="crumb"><a href="#/accueil">Accueil</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg><b>À propos</b></p>
+  </div>
+</div>
+
+<section class="section" id="apropos">
+  <div class="wrap about reveal">
+    <p>CAP Santé Maristes est un espace dédié à la santé et au bien-être des femmes,
+      des enfants et des familles. Notre objectif est d'offrir un accueil chaleureux
+      et un accompagnement adapté aux besoins de chaque patient.</p>
+    <p class="sig">Maristes — Dakar, Sénégal</p>
+  </div>
+</section>
+
+<section class="section section--soft" id="pourquoi">
+  <div class="wrap split">
+    <div class="reveal">
+      <div class="shead" style="margin-bottom:26px">
+        <h2>Pourquoi choisir CAP Santé Maristes ?</h2>
+      </div>
+      <ul class="perks">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg>
+          <div><b>Une équipe médicale</b><span>Sage-femme, gynécologie, médecine générale et pédiatrie.</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg>
+          <div><b>Un accueil chaleureux</b><span>Un cadre calme, propre, où l'on se sent attendu.</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg>
+          <div><b>Un accompagnement personnalisé</b><span>Un suivi adapté à votre situation et à votre rythme.</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg>
+          <div><b>Des services pour toute la famille</b><span>Des futures mamans aux enfants et aux adolescents.</span></div>
+        </li>
+      </ul>
+    </div>
+    <div class="split__art reveal" style="max-width:470px">
+      <div class="arch" style="border-radius:var(--radius-lg)">
+        <svg viewBox="0 0 470 400" role="img" aria-label="Illustration : salle de consultation claire et accueillante">
+          <rect width="470" height="400" fill="var(--illu-bg)"/>
+          <!-- fenêtre en arche -->
+          <path d="M60 220V132a56 56 0 0 1 112 0v88z" fill="var(--illu-sun)"/>
+          <path d="M116 132v88M60 176h112" stroke="var(--illu-pattern)" stroke-width="3"/>
+          <!-- table d'examen -->
+          <rect x="212" y="206" width="206" height="26" rx="13" fill="#CFE4DA"/>
+          <rect x="212" y="232" width="206" height="14" fill="#9CC4DE"/>
+          <rect x="230" y="246" width="12" height="52" fill="#5E3B26"/>
+          <rect x="388" y="246" width="12" height="52" fill="#5E3B26"/>
+          <rect x="222" y="188" width="56" height="20" rx="10" fill="#F4DFDC"/>
+          <!-- plante -->
+          <g transform="translate(96 246)">
+            <path d="M22 0c-18 8-26 26-22 48 20-2 32-18 22-48z" fill="#5E8F7C"/>
+            <path d="M22 4c18 8 26 26 22 48-20-2-32-18-22-48z" fill="#9BC7B7"/>
+            <path d="M4 48h40l-6 38a8 8 0 0 1-8 7H18a8 8 0 0 1-8-7z" fill="#C38B6A"/>
+          </g>
+          <!-- sol -->
+          <rect y="298" width="470" height="102" fill="url(#waxArcs)"/>
+          <path d="M0 298h470" stroke="var(--illu-pattern)" stroke-width="3"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="page" data-page="contact">
+<div class="phead">
+  <div class="wrap">
+    <p class="crumb"><a href="#/accueil">Accueil</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg><b>Contact</b></p>
+  </div>
+</div>
+
+<section class="section section--soft" id="contact">
+  <div class="wrap">
+    <div class="shead reveal">
+      <h2>Nous contacter</h2>
+      <p>Appelez-nous, écrivez-nous sur WhatsApp, ou demandez un rendez-vous ci-dessous.</p>
+    </div>
+
+    <div class="contact__grid">
+      <div class="info reveal">
+        <div class="info__row">
+          <i class="t-vert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a12 12 0 0 0 5 5L14 12l5 2v3a2 2 0 0 1-2.2 2A16 16 0 0 1 3 5.2 2 2 0 0 1 5 3Z"/></svg></i>
+          <div><small>Téléphone</small><a href="tel:+221771266262">+221 77 126 62 62</a></div>
+        </div>
+        <div class="info__row">
+          <i style="background:#DFF3E5;color:#16803F"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.3 1.3-1.8 1.3-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3 0 .1 0 .6-.2 1.2Z"/></svg></i>
+          <div><small>WhatsApp</small><a href="https://wa.me/221776318385" target="_blank" rel="noopener">+221 77 631 83 85</a></div>
+        </div>
+        <div class="info__row">
+          <i class="t-bleu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></i>
+          <div><small>Localisation</small><b>Maristes, Dakar, Sénégal</b></div>
+        </div>
+        <div class="info__acts">
+          <a class="btn btn--primary btn--sm" href="tel:+221771266262">Appeler</a>
+          <a class="btn btn--wa btn--sm" href="https://wa.me/221776318385?text=Bonjour%20CAP%20Sant%C3%A9%20Maristes%2C%20je%20souhaite%20avoir%20des%20informations." target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="form reveal" id="rdv">
+        <h3>Prendre rendez-vous</h3>
+        <p>Remplissez ce formulaire : votre demande part directement sur notre WhatsApp,
+          et nous vous confirmons le créneau.</p>
+
+        <form id="rdvForm" novalidate>
+          <div class="grid2">
+            <div class="field" data-field>
+              <label for="f-nom">Nom et prénom</label>
+              <input id="f-nom" name="nom" type="text" autocomplete="name" placeholder="Awa Diop" required>
+              <span class="err">Indiquez votre nom.</span>
+            </div>
+            <div class="field" data-field>
+              <label for="f-tel">Téléphone</label>
+              <input id="f-tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="77 000 00 00" required>
+              <span class="err">Indiquez un numéro où vous joindre.</span>
+            </div>
+            <div class="field" data-field>
+              <label for="f-service">Service souhaité</label>
+              <select id="f-service" name="service" required>
+                <option value="">Choisir un service</option>
+                <option>Sage-femme</option>
+                <option>Suivi de grossesse</option>
+                <option>Gynécologie</option>
+                <option>Médecine générale</option>
+                <option>Pédiatrie</option>
+                <option>Massage traditionnel (damp)</option>
+                <option>Produits (valise, karité)</option>
+                <option>Autre</option>
+              </select>
+              <span class="err">Choisissez un service.</span>
+            </div>
+            <div class="field" data-field>
+              <label for="f-date">Date souhaitée</label>
+              <input id="f-date" name="date" type="date">
+            </div>
+            <div class="field field--full" data-field>
+              <label for="f-msg">Message</label>
+              <textarea id="f-msg" name="message" placeholder="Précisez votre demande, l'horaire qui vous arrange…"></textarea>
+            </div>
+          </div>
+
+          <div class="form__foot">
+            <button class="btn btn--wa" type="submit">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.3 1.3-1.8 1.3-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3 0 .1 0 .6-.2 1.2Z"/></svg>
+              Envoyer ma demande
+            </button>
+            <span class="form__hint">Ou appelez le +221 77 126 62 62 pendant les heures d'ouverture.</span>
+          </div>
+          <p class="ok" id="rdvOk" role="status">Votre demande est prête dans WhatsApp — il ne reste qu'à l'envoyer.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <h4>CAP Santé Maristes</h4>
+        <p class="foot__tag">Votre santé, notre priorité.</p>
+        <div class="foot__social">
+          <a href="https://wa.me/221776318385" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.3 1.3-1.8 1.3-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3 0 .1 0 .6-.2 1.2Z"/></svg>
+          </a>
+          <a href="tel:+221771266262" aria-label="Appeler le cabinet">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a12 12 0 0 0 5 5L14 12l5 2v3a2 2 0 0 1-2.2 2A16 16 0 0 1 3 5.2 2 2 0 0 1 5 3Z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <p class="foot__lbl">Nous joindre</p>
+        <p><a href="tel:+221771266262" style="text-decoration:none">+221 77 126 62 62</a><br>
+           <a href="tel:+221776318385" style="text-decoration:none">+221 77 631 83 85</a></p>
+        <p style="margin-top:10px">Maristes — Dakar, Sénégal</p>
+      </div>
+      <div>
+        <p class="foot__lbl">Le cabinet</p>
+        <ul>
+          <li><a href="#/accueil" data-nav="accueil">Accueil</a></li>
+          <li><a href="#/services" data-nav="services">Services</a></li>
+          <li><a href="#/maternite" data-nav="maternite">Maternité</a></li>
+          <li><a href="#/massage-traditionnel" data-nav="massage-traditionnel">Massage traditionnel</a></li>
+          <li><a href="#/produits" data-nav="produits">Produits</a></li>
+          <li><a href="#/a-propos" data-nav="a-propos">À propos</a></li>
+          <li><a href="#/contact" data-nav="contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bar">
+      <span>© <span id="yr">2026</span> CAP Santé Maristes</span>
+      <span>Le contenu de ce site est informatif et ne remplace pas une consultation.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="dock">
+  <a class="btn btn--ghost" href="tel:+221771266262">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a12 12 0 0 0 5 5L14 12l5 2v3a2 2 0 0 1-2.2 2A16 16 0 0 1 3 5.2 2 2 0 0 1 5 3Z"/></svg>
+    Appeler
+  </a>
+  <a class="btn btn--wa" href="https://wa.me/221776318385?text=Bonjour%20CAP%20Sant%C3%A9%20Maristes%2C%20je%20souhaite%20avoir%20des%20informations." target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.3 1.3-1.8 1.3-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3 0 .1 0 .6-.2 1.2Z"/></svg>
+    WhatsApp
+  </a>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* =====================================================================
+     1. WhatsApp — API officielle "Click to Chat" (https://wa.me)
+        Un seul endroit à modifier pour changer les numéros.
+     ===================================================================== */
+  var WA = {
+    base   : "https://wa.me/",
+    rdv    : "221776318385",   // reçoit rendez-vous, commandes et questions
+    appel  : "221771266262",
+    defaut : "Bonjour CAP Santé Maristes, je souhaite avoir des informations."
+  };
+
+  function waUrl(message, numero){
+    return WA.base + (numero || WA.rdv) + "?text=" + encodeURIComponent(message || WA.defaut);
+  }
+  function waOpen(message, numero){
+    var w = window.open(waUrl(message, numero), "_blank", "noopener");
+    if (!w) location.href = waUrl(message, numero);   // si le popup est bloqué
+  }
+  /* Tout élément portant data-wa devient un lien WhatsApp pré-rempli. */
+  function bindWa(){
+    Array.prototype.slice.call(document.querySelectorAll("[data-wa]")).forEach(function(el){
+      if (el.getAttribute("data-wa-ready")) return;
+      el.setAttribute("data-wa-ready","1");
+      var msg = el.getAttribute("data-wa");
+      if (el.tagName === "A") el.setAttribute("href", waUrl(msg));
+      el.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); waOpen(msg);
+      });
+    });
+  }
+
+  /* =====================================================================
+     2. Routeur — une page par entrée de menu
+     ===================================================================== */
+  var ROUTES = {
+    "accueil"              : {page:"accueil",   titre:"Cabinet médical & maternité à Dakar"},
+    "services"             : {page:"services",  titre:"Nos services médicaux"},
+    "maternite"            : {page:"maternite", titre:"Maternité & accompagnement"},
+    "massage-traditionnel" : {page:"tradition", titre:"Massage traditionnel — Damp"},
+    "produits"             : {page:"produits",  titre:"Nos produits"},
+    "a-propos"             : {page:"apropos",   titre:"À propos du cabinet"},
+    "contact"              : {page:"contact",   titre:"Nous contacter"},
+    "rendez-vous"          : {page:"contact",   titre:"Prendre rendez-vous", ancre:"rdv"}
+  };
+  var DEFAUT = "accueil";
+
+  var pages = {}, reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  Array.prototype.slice.call(document.querySelectorAll("[data-page]")).forEach(function(p){
+    pages[p.getAttribute("data-page")] = p;
+  });
+
+  var io = null;
+  if (!reduce && "IntersectionObserver" in window){
+    io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en, i){
+        if (!en.isIntersecting) return;
+        var el = en.target;
+        setTimeout(function(){ el.classList.add("is-in"); }, Math.min(i,4) * 70);
+        io.unobserve(el);
+      });
+    }, {rootMargin:"0px 0px -6% 0px", threshold:.1});
+  }
+  function animer(scope){
+    var els = Array.prototype.slice.call(scope.querySelectorAll(".reveal"));
+    els.forEach(function(el){
+      if (el.classList.contains("is-in")) return;
+      if (io) io.observe(el); else el.classList.add("is-in");
+    });
+  }
+
+  function cleRoute(){
+    var h = (location.hash || "").replace(/^#\/?/, "").split("?")[0].toLowerCase();
+    return ROUTES[h] ? h : DEFAUT;
+  }
+
+  function afficher(cle){
+    var r = ROUTES[cle];
+    Object.keys(pages).forEach(function(k){
+      pages[k].classList.toggle("is-on", k === r.page);
+    });
+    document.title = "CAP Santé Maristes — " + r.titre;
+
+    Array.prototype.slice.call(document.querySelectorAll("[data-nav]")).forEach(function(a){
+      var actif = a.getAttribute("data-nav") === cle ||
+                  (cle === "rendez-vous" && a.getAttribute("data-nav") === "contact");
+      a.classList.toggle("is-active", actif);
+      if (actif) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current");
+    });
+
+    window.scrollTo(0, 0);
+    animer(pages[r.page]);
+    bindWa();
+
+    if (r.ancre){
+      var cible = document.getElementById(r.ancre);
+      if (cible) setTimeout(function(){
+        cible.scrollIntoView(reduce ? true : {behavior:"smooth", block:"start"});
+      }, 90);
+    }
+  }
+
+  window.addEventListener("hashchange", function(){ afficher(cleRoute()); });
+
+  /* Un clic sur le lien de la page courante ramène en haut. */
+  document.addEventListener("click", function(e){
+    var a = e.target.closest ? e.target.closest('a[href^="#/"]') : null;
+    if (!a || a.hasAttribute("data-wa")) return;
+    if (a.getAttribute("href") === location.hash){
+      e.preventDefault();
+      window.scrollTo(0, 0);
+    }
+  });
+
+  /* =====================================================================
+     3. En-tête, menu mobile, dépliant maternité
+     ===================================================================== */
+  var burger = document.getElementById("burger"),
+      menu   = document.getElementById("menu"),
+      hdr    = document.getElementById("hdr");
+
+  burger.addEventListener("click", function(){
+    var open = menu.classList.toggle("is-open");
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  menu.addEventListener("click", function(e){
+    if (e.target.closest("a")){
+      menu.classList.remove("is-open");
+      burger.setAttribute("aria-expanded","false");
+    }
+  });
+
+  var onScroll = function(){ hdr.classList.toggle("is-stuck", window.scrollY > 8); };
+  onScroll();
+  window.addEventListener("scroll", onScroll, {passive:true});
+
+  var mt = document.getElementById("matToggle"), mm = document.getElementById("matMore");
+  if (mt && mm){
+    mt.addEventListener("click", function(){
+      var open = mm.getAttribute("data-open") !== "true";
+      mm.setAttribute("data-open", open ? "true" : "false");
+      mt.setAttribute("aria-expanded", open ? "true" : "false");
+      mt.childNodes[0].nodeValue = open ? "Réduire " : "En savoir plus ";
+    });
+  }
+
+  /* =====================================================================
+     4. Formulaire de rendez-vous --> message WhatsApp pré-rempli
+     ===================================================================== */
+  var form = document.getElementById("rdvForm"), ok = document.getElementById("rdvOk");
+
+  function dateFr(v){
+    if (!v) return "";
+    var p = v.split("-");
+    return p.length === 3 ? p[2] + "/" + p[1] + "/" + p[0] : v;
+  }
+
+  if (form){
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var manquant = null;
+      ["f-nom","f-tel","f-service"].forEach(function(id){
+        var el = document.getElementById(id), wrap = el.closest("[data-field]"), vide = !el.value.trim();
+        wrap.classList.toggle("is-bad", vide);
+        if (vide && !manquant) manquant = el;
+      });
+      if (manquant){ manquant.focus(); ok.classList.remove("is-on"); return; }
+
+      var d = new FormData(form);
+      var lignes = [
+        "Bonjour CAP Santé Maristes, je souhaite prendre rendez-vous.",
+        "",
+        "Nom : " + d.get("nom").trim(),
+        "Téléphone : " + d.get("tel").trim(),
+        "Service : " + d.get("service")
+      ];
+      if (d.get("date")) lignes.push("Date souhaitée : " + dateFr(d.get("date")));
+      if (d.get("message") && d.get("message").trim()) lignes.push("Message : " + d.get("message").trim());
+
+      waOpen(lignes.join("\n"));
+      ok.classList.add("is-on");
+    });
+    form.addEventListener("input", function(e){
+      var wrap = e.target.closest("[data-field]");
+      if (wrap && e.target.value.trim()) wrap.classList.remove("is-bad");
+    });
+  }
+
+  /* =====================================================================
+     5. Démarrage
+     ===================================================================== */
+  document.getElementById("yr").textContent = new Date().getFullYear();
+  bindWa();
+  afficher(cleRoute());
+})();
+</script>
+</body>
+</html>
